@@ -3,6 +3,8 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '6.1.0'
 }
 
+version = "1.3.1-Rework-BETA"
+
 repositories {
     mavenCentral()
     maven { url = "https://repo.codemc.org/repository/nms/" }
@@ -13,4 +15,12 @@ dependencies {
     compileOnly("org.projectlombok:lombok:1.18.14")
     compileOnly fileTree(include: ['*.jar'], dir: 'libs')
     annotationProcessor("org.projectlombok:lombok:1.18.14")
+}
+
+tasks {
+    processResources {
+        eachFile {
+            filter { it.replace("%{plugin.version}", version.toString()) }
+        }
+    }
 }

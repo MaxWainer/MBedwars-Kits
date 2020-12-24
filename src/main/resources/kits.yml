@@ -1,3 +1,9 @@
+#######################
+# MBedWars Kits
+# Version: %{plugin.version}
+#######################
+# kits.yml
+
 kits:
   'one':
     custom-name: "&cExample kit"

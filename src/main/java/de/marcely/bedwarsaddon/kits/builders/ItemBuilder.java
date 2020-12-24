@@ -1,6 +1,7 @@
 package de.marcely.bedwarsaddon.kits.builders;
 
 import de.marcely.bedwarsaddon.libs.XMaterial;
+import lombok.ToString;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -9,6 +10,7 @@ import java.util.List;
 
 import static de.marcely.bedwarsaddon.kits.helpers.Colorizer.c;
 
+@ToString
 public class ItemBuilder {
 
     private final Material material;

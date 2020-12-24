@@ -12,7 +12,7 @@ import java.util.Arrays;
 public enum Language {
 
     PREFIX(new Message()
-        .line("&cBedWars-Kits &8»&7")
+        .line("&cBedWars-Kits &8|&7")
     ),
     PERMISSIONS_DENIED(new Message()
         .line("{prefix} &cYou doesn't have enough permissions to do this!")

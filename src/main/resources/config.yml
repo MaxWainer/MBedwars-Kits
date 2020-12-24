@@ -1,5 +1,12 @@
+#######################
+# MBedWars Kits
+# Version: %{plugin.version}
+#######################
+# config.yml
+#
 # Here you can easily sync kits data
 # with all servers using mysql!
+
 storage:
   use-mysql: false
   settings:

@@ -8,6 +8,7 @@ import de.marcely.bedwarsaddon.kits.storage.IDatabase;
 import de.marcely.bedwarsaddon.kits.storage.types.MySQL;
 import de.marcely.bedwarsaddon.kits.storage.types.SQLite;
 import lombok.Getter;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class BWKitAddon extends JavaPlugin {
@@ -25,17 +26,29 @@ public class BWKitAddon extends JavaPlugin {
     public void onEnable() {
 
         instance = this;
-        logFactory = new LoggerFactory(this);
-        cachedStorage = new CachedStorage();
+        logFactory = new LoggerFactory();
 
-        loadFiles();
-
-        loadDb();
+        getLogFactory().log("Loading plugin &5" + getName() + "&7...");
+        loadComponents();
+        getLogFactory().log("Plugin successfully loaded!");
     }
 
     @Override
     public void onDisable() {
+        getLogFactory().log("Disabling plugin...");
+        getCachedStorage().getKitMap().clear();
+        getLogFactory().log("Plugin successfully disabled!");
+    }
 
+    private void loadComponents() {
+        try {
+            checkDependency("MBedwars");
+            cachedStorage = new CachedStorage();
+            loadFiles();
+            loadDb();
+        } catch (Exception e) {
+            getLogFactory().error(e);
+        }
     }
 
     private void loadFiles() {
@@ -56,6 +69,15 @@ public class BWKitAddon extends JavaPlugin {
         getLogFactory().log(
                 "Using " + (bool ? "&3MySQL" : "&6SQLite") + "&7 as storage provider!"
         );
+    }
+
+    private void checkDependency(String name) throws Exception {
+        boolean pluginState = (Bukkit.getPluginManager().getPlugin(name) != null);
+        if(!pluginState) {
+            Bukkit.getPluginManager().disablePlugin(this);
+            throw new Exception("Error while enabling plugin &6" + getName() + "&7, can't found needed plugin &4" + name + "&7!");
+        } else
+            getLogFactory().log("Plugin successfully hooked into &5" + name + "&7!");
     }
 
 }

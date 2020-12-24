@@ -7,20 +7,12 @@ import java.util.Arrays;
 
 public class LoggerFactory {
 
-    private final BWKitAddon main;
+    private BWKitAddon main = BWKitAddon.getInstance();
 
-    public LoggerFactory(BWKitAddon main) {
-        this.main = main;
-    }
-
-    private String name() {
-        return main.getName();
-    }
-
-    private String def = "&3[" + name() + "] &7";
-    private String error = "&c[" + name() + " Error] &7";
-    private String debug = "&2[" + name() + " Debug] &7";
-    private String warn = "&6[" + name() + " Warn] &7";
+    private String def = "&3[" + main.getName() + "] &7";
+    private String error = "&c[" + main.getName() + " Error] &7";
+    private String debug = "&2[" + main.getName() + " Debug] &7";
+    private String warn = "&6[" + main.getName() + " Warn] &7";
 
     public void log(String s) {
         printer(def + s);

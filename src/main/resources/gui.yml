@@ -1,4 +1,10 @@
-title: ""
+#######################
+# MBedWars Kits
+# Version: %{plugin.version}
+#######################
+# guis.yml
+
+title: "Kits {0}/{1}"
 
 layout:
   - "#########"

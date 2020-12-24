@@ -1,7 +1,6 @@
 package de.marcely.bedwarsaddon.kits.files;
 
 import de.marcely.bedwarsaddon.kits.BWKitAddon;
-import lombok.SneakyThrows;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
