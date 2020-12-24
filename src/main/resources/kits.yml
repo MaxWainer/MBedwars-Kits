@@ -1,0 +1,15 @@
+kits:
+  'one':
+    custom-name: "&cExample kit"
+    description:
+      - ""
+    price:
+      value: 1000
+      type: vault
+    items:
+      i:
+        item:
+          stack: diamond sword:0
+        count: 1
+        lore:
+          - "&cSword from kit!"

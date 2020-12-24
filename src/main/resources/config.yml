@@ -1,0 +1,10 @@
+# Here you can easily sync kits data
+# with all servers using mysql!
+storage:
+  use-mysql: false
+  settings:
+    user: "root"
+    pass: "password"
+    host: "localhost"
+    port: 3306
+    database: "bw_kits"

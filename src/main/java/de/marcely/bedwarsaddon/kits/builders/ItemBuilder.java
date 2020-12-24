@@ -1,9 +1,11 @@
 package de.marcely.bedwarsaddon.kits.builders;
 
 import de.marcely.bedwarsaddon.libs.XMaterial;
+import lombok.NonNull;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -22,27 +24,27 @@ public class ItemBuilder {
         this.material = material;
     }
 
-    public ItemBuilder damage(int damage) {
+    public ItemBuilder damage(@Nullable int damage) {
         this.damage = (short) damage;
         return this;
     }
 
-    public ItemBuilder count(int count) {
+    public ItemBuilder count(@Nullable int count) {
         this.count = count;
         return this;
     }
 
-    public ItemBuilder name(String name) {
+    public ItemBuilder name(@Nullable String name) {
         this.name = name;
         return this;
     }
 
-    public ItemBuilder addLore(String lore) {
+    public ItemBuilder addLore(@Nullable String lore) {
         this.lore.add(lore);
         return this;
     }
 
-    public ItemBuilder lore(List<String> lore) {
+    public ItemBuilder lore(@Nullable List<String> lore) {
         this.lore = lore;
         return this;
     }

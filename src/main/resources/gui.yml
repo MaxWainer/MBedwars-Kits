@@ -1,0 +1,69 @@
+title: ""
+
+layout:
+  - "#########"
+  - "#@@@@@@@#"
+  - "#@@@@@@@#"
+  - "#@@@@@@@#"
+  - "##<#B#>##"
+
+empty-char: '@'
+
+items:
+  '#':
+    name: " "
+    item:
+      stack: black stained glass pane:0
+  'B':
+    name: " "
+    lore:
+      - ""
+    item:
+      stack: black stained glass pane:0
+
+special-items:
+  '>':
+    type: next page
+    name: "&cNext page &8>"
+    lore:
+      - "&7Click here, to open next"
+      - "&7page"
+    item:
+      stack:
+        yes: arrow:0
+        no: black stained glass pane:0
+  '<':
+    type: previous page
+    name: "&8< &cPrevious page"
+    lore:
+      - "&7Click here, to open"
+      - "&7previous page"
+    item:
+      stack:
+        yes: arrow:0
+        no: black stained glass pane:0
+
+
+attaches:
+  'B':
+    "msg": # < Type. Available: 'cmd', 'msg'
+      values: # Support PAPI
+        - "&3[BedWars-Kits]&6 Your current balance: "
+    "cmd":
+      values: ""
+
+kit-item:
+  name: "&c{name}"
+  lore:
+    - "&c---------------"
+    - "&7{description}"
+    - "&c---------------"
+    - ""
+    - "{state}"
+
+  state-settings:
+    have: "&aClick here to select it!"
+    not-have: "&cYou didn't have this kit!"
+    selected: "&6You are selected this kit!"
+
+

@@ -1,31 +1,10 @@
 package de.marcely.bedwarsaddon.kits;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import de.marcely.bedwars.Language;
-import de.marcely.bedwars.api.BedwarsAPI;
-import de.marcely.bedwars.api.BedwarsAddon;
-import de.marcely.bedwars.api.BedwarsAddon.BedwarsAddonCommand;
-import de.marcely.bedwars.api.CustomLobbyItem;
-import de.marcely.bedwars.api.Util;
-import de.marcely.bedwars.api.VersionAPI;
-import de.marcely.bedwars.api.gui.GUI;
-import de.marcely.bedwars.api.gui.GUIItem;
 
 public class BedwarsAddonKits extends JavaPlugin {
 	
-	public static Plugin plugin;
+	/**public static Plugin plugin;
 	public static BedwarsAddon bedwarsAddon;
 	
 	public static List<Kit> kits = new ArrayList<Kit>();
@@ -83,7 +62,7 @@ public class BedwarsAddonKits extends JavaPlugin {
 			is.setItemMeta(im);
 			kit.setIcon(VersionAPI.removeAttributes(is)); // also remove meta attributes
 		}
-		
+
 		// add lobby item
 		BedwarsAPI.registerLobbyItem(new CustomLobbyItem("kits"){
 			@Override
@@ -130,5 +109,5 @@ public class BedwarsAddonKits extends JavaPlugin {
 	
 	public static String getPermission(String kit){
 		return "mbedwars.addon.kits." + kit;
-	}
+	}**/
 }

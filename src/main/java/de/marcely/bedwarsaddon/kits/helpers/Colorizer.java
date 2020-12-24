@@ -16,6 +16,7 @@ public class Colorizer {
         in.forEach(e -> {
             newArray.add(c(e));
         });
+        Integer.parseInt("12");
         return newArray;
     }
 
