@@ -33,7 +33,7 @@ public class Events implements Listener {
 	@EventHandler
 	public void onArenaStatusUpdateEvent(final ArenaStatusUpdateEvent event){
 		// give every player the items of their kits if the arena is starting
-		if(BedwarsAddonKits.kits.size() >= 1 && event.getStatusBefore() == ArenaStatus.Lobby && event.getStatus() == ArenaStatus.Running){
+		if(BedwarsAddonKits.kits.size() >= 1 && event.getStatusBefore() == ArenaStatus.Lobby && event.getStatus() == ArenaStatus.Running) {
 			// wait a secound before giving him his items because if we would give them him now, they would disappear
 			new BukkitRunnable(){
 				@Override
