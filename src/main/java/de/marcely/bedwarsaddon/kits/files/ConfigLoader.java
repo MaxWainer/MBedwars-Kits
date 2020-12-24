@@ -2,10 +2,12 @@ package de.marcely.bedwarsaddon.kits.files;
 
 import de.marcely.bedwarsaddon.kits.BWKitAddon;
 import lombok.SneakyThrows;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 
 public class ConfigLoader {
@@ -18,15 +20,18 @@ public class ConfigLoader {
                 );
     }
 
-    @SneakyThrows
     private static void loadConfig(String name) {
-        File file = new File(BWKitAddon.getInstance().getDataFolder(), name + ".yml");
-        if(!file.exists()){
-            file.getParentFile().mkdirs();
-            BWKitAddon.getInstance().saveResource(name + ".yml", false);
+        try {
+            File file = new File(BWKitAddon.getInstance().getDataFolder(), name + ".yml");
+            if(!file.exists()){
+                file.getParentFile().mkdirs();
+                BWKitAddon.getInstance().saveResource(name + ".yml", false);
+            }
+            FileConfiguration fileConfiguration = new YamlConfiguration();
+            fileConfiguration.load(file);
+        } catch (IOException | InvalidConfigurationException e) {
+            BWKitAddon.getLogFactory().error(e);
         }
-        FileConfiguration fileConfiguration = new YamlConfiguration();
-        fileConfiguration.load(file);
     }
 
     public static void loadConfigs(String... names) {

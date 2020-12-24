@@ -1872,7 +1872,7 @@ public enum XMaterial {
         if (this.data != 0 || this.version >= 13) return -1;
         Material material = this.parseMaterial();
         if (material == null) return -1;
-        if (Data.ISFLAT && !material.isLegacy()) return -1;
+        if (Data.ISFLAT) return -1;
         return material.getId();
     }
 
