@@ -7,11 +7,11 @@
 title: "Kits {0}/{1}"
 
 layout:
-  - "#########"
-  - "#@@@@@@@#"
-  - "#@@@@@@@#"
-  - "#@@@@@@@#"
-  - "##<#B#>##"
+  - '#########'
+  - '#@@@@@@@#'
+  - '#@@@@@@@#'
+  - '#@@@@@@@#'
+  - '##<#B#>##'
 
 empty-char: '@'
 
@@ -21,11 +21,17 @@ items:
     item:
       stack: black stained glass pane:0
   'B':
-    name: " "
+    name: "&c{player}'s stat"
     lore:
       - ""
+      - "&7Selected kit: {current-kit}" # More at locales.yml
     item:
       stack: black stained glass pane:0
+      count: 2
+
+#
+# TODO: Complete this path of config!
+#
 
 special-items:
   '>':
@@ -49,14 +55,21 @@ special-items:
         yes: arrow:0
         no: black stained glass pane:0
 
+#
+# TODO: Complete this path of config!
+#
 
 attaches:
-  'B':
+  'B': # < Button icon
     "msg": # < Type. Available: 'cmd', 'msg'
       values: # Support PAPI
         - "&3[BedWars-Kits]&6 Your current balance: "
     "cmd":
       values: ""
+
+#
+# TODO: Complete this path of config!
+#
 
 kit-item:
   name: "&c{name}"

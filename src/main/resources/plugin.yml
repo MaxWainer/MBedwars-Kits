@@ -5,7 +5,7 @@
 
 version: %{plugin.version}
 main: de.marcely.bedwarsaddon.kits.BWKitAddon
-name: MBedwarsKits
+name: MBedWarsKits
 
 authors:
   - Marcely1199
@@ -22,3 +22,6 @@ softdepend:
   - Vault
 loadbefore:
   - MBedwars
+
+commands: # It's for testing!
+  kits: # It's for testing!

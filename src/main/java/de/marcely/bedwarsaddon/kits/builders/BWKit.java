@@ -1,8 +1,7 @@
 package de.marcely.bedwarsaddon.kits.builders;
 
 import de.marcely.bedwarsaddon.kits.files.ConfigLoader;
-import de.marcely.bedwarsaddon.kits.helpers.Pair;
-import de.marcely.bedwarsaddon.kits.helpers.StringUtils;
+import de.marcely.bedwarsaddon.kits.helpers.jutils.Pair;
 import lombok.Getter;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -11,8 +10,8 @@ import org.bukkit.inventory.ItemStack;
 import java.util.ArrayList;
 import java.util.List;
 
-import static de.marcely.bedwarsaddon.kits.helpers.StringUtils.splitBy;
-import static de.marcely.bedwarsaddon.kits.helpers.StringUtils.toEnum;
+import static de.marcely.bedwarsaddon.kits.helpers.jutils.StringUtils.splitBy;
+import static de.marcely.bedwarsaddon.kits.helpers.jutils.StringUtils.toEnum;
 
 public class BWKit {
 

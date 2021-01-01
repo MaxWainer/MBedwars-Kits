@@ -23,4 +23,12 @@ tasks {
             filter { it.replace("%{plugin.version}", version.toString()) }
         }
     }
+
+    task copy(type: Copy) {
+        from("$buildDir/libs") {
+            include("/*.jar")
+        }
+        into("E:/Coding/TestServer/plugins")
+    }
+
 }

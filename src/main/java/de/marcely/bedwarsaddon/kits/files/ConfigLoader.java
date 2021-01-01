@@ -22,11 +22,14 @@ public class ConfigLoader {
     private static void loadConfig(String name) {
         try {
             File file = new File(BWKitAddon.getInstance().getDataFolder(), name + ".yml");
+
             if(!file.exists()){
                 file.getParentFile().mkdirs();
                 BWKitAddon.getInstance().saveResource(name + ".yml", false);
             }
+
             FileConfiguration fileConfiguration = new YamlConfiguration();
+
             fileConfiguration.load(file);
         } catch (IOException | InvalidConfigurationException e) {
             BWKitAddon.getLogFactory().error(e);

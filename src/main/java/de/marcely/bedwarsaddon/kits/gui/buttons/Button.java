@@ -4,14 +4,16 @@ import de.marcely.bedwarsaddon.kits.builders.ItemBuilder;
 import de.marcely.bedwarsaddon.kits.gui.events.builtin.menu.MenuClickEvent;
 import lombok.Getter;
 import lombok.ToString;
-import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.Material;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.function.Consumer;
 
 @Getter@ToString
 public class Button {
 
-    private Consumer<MenuClickEvent> action = (e) -> e.setCancelled(true);
+    @ToString.Exclude private Consumer<MenuClickEvent> action = (e) -> e.setCancelled(true);
     private ItemBuilder builder;
     private char icon;
 
@@ -35,6 +37,21 @@ public class Button {
                 .symbol(icon)
                 .stack(builder)
                 .action(action);
+    }
+
+    public static List<Button> generate(int count, char icon, String name, Material mat) {
+        List<Button> returnable = new ArrayList<>();
+        for (int i = 0; i >= count; i++) {
+            final int fi = i;
+            returnable.add(
+                    of(icon, ItemBuilder.of(
+                                        mat, 0, 1, name + "&r &c&l#" + i
+                            ),
+                            e -> e.getClicker().asUser().sendMessage("You are clicked on button #" + fi)
+                    )
+            );
+        }
+        return returnable;
     }
 
 

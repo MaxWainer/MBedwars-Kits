@@ -1,7 +1,10 @@
 package de.marcely.bedwarsaddon.kits;
 
+import de.marcely.bedwarsaddon.kits.command.KitCommand;
 import de.marcely.bedwarsaddon.kits.files.ConfigLoader;
 import de.marcely.bedwarsaddon.kits.files.Language;
+import de.marcely.bedwarsaddon.kits.gui.events.MenuEvents;
+import de.marcely.bedwarsaddon.kits.gui.events.builtin.PrivateListener;
 import de.marcely.bedwarsaddon.kits.helpers.LoggerFactory;
 import de.marcely.bedwarsaddon.kits.storage.CachedStorage;
 import de.marcely.bedwarsaddon.kits.storage.IDatabase;
@@ -31,6 +34,8 @@ public class BWKitAddon extends JavaPlugin {
         getLogFactory().log("Loading plugin &5" + getName() + "&7...");
         loadComponents();
         getLogFactory().log("Plugin successfully loaded!");
+
+        getCommand("kits").setExecutor(new KitCommand()); // It's for testing!
     }
 
     @Override
@@ -43,9 +48,14 @@ public class BWKitAddon extends JavaPlugin {
     private void loadComponents() {
         try {
             checkDependency("MBedwars");
+
             cachedStorage = new CachedStorage();
             loadFiles();
             loadDb();
+
+            Bukkit.getPluginManager().registerEvents(new PrivateListener(), this);
+            Bukkit.getPluginManager().registerEvents(new MenuEvents(), this);
+
         } catch (Exception e) {
             getLogFactory().error(e);
         }

@@ -6,7 +6,6 @@ import lombok.Setter;
 import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
-import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 
 @Getter
@@ -27,6 +26,10 @@ public final class MenuOpenEvent extends Event implements Cancellable {
 
     @Override
     public HandlerList getHandlers() {
-        return null;
+        return handlers;
+    }
+
+    public static HandlerList getHandlerList(){
+        return handlers;
     }
 }

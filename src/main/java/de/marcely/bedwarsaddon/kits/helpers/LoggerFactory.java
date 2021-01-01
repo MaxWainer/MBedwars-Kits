@@ -57,4 +57,8 @@ public class LoggerFactory {
         Bukkit.getConsoleSender().sendMessage(Colorizer.c(s));
     }
 
+    public static void debugger(String s) {
+        Bukkit.getConsoleSender().sendMessage(Colorizer.c("&c[DEBUG]: &7" + s));
+    }
+
 }

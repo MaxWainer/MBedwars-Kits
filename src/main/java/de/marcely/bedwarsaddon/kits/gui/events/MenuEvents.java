@@ -7,8 +7,8 @@ import org.bukkit.event.Listener;
 public class MenuEvents implements Listener {
 
     @EventHandler
-    public void onMenuClick(MenuClickEvent e){
-
+    public void onMenuClick(MenuClickEvent e) {
+        e.getClickedButton().getAction().accept(e);
     }
 
 }

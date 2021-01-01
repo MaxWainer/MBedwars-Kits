@@ -2,17 +2,21 @@ package de.marcely.bedwarsaddon.kits.gui.helpers;
 
 public class SizeController {
 
-    public static boolean isAllowed(int input) throws Exception {
+    public static int isAllowed(int input) throws Exception {
         switch (input) {
             case 1:
+                return 1;
             case 2:
+                return 2;
             case 3:
+                return 3;
             case 4:
+                return 4;
             case 5:
+                return 5;
             case 6:
-                return true;
             default:
-                throw new Exception("Error while drawing menu! Input size is: " + input + ", maximum: 6");
+                return 6;
         }
     }
 

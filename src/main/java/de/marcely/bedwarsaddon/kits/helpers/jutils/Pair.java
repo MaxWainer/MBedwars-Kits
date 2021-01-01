@@ -1,4 +1,4 @@
-package de.marcely.bedwarsaddon.kits.helpers;
+package de.marcely.bedwarsaddon.kits.helpers.jutils;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
