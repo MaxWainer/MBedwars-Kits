@@ -12,6 +12,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import static de.marcely.bedwarsaddon.kits.helpers.LoggerFactory.debugger;
+
 @Getter
 public class MenuConfig {
 
@@ -32,6 +34,8 @@ public class MenuConfig {
     }
 
     private MenuDrawer loadDrawer() {
+        debugger("Rows: " + yml().getStringList("layout"));
+        debugger("Empty char: " + CharUtils.fromString(yml().getString("empty-char")));
         return new MenuDrawer()
                 .setRows(yml().getStringList("layout"))
                 .freeSpace(CharUtils.fromString(yml().getString("empty-char")))
@@ -41,15 +45,19 @@ public class MenuConfig {
     private List<Button> loadButtons() {
         List<Button> buttons = new ArrayList<>();
 
-        yml().getConfigurationSection("items").getKeys(false).forEach(e ->
+        yml().getConfigurationSection("items").getKeys(false).forEach(e -> {
+            Button b = Button.of(
+                    CharUtils.fromString(e),
+                    ItemBuilder.fromYaml(yml(), "items." + e),
+                    ButtonAttachment.fromYaml(yml(), "attaches." + e)
+            );
+
             buttons.add(
-                    Button.of(
-                            CharUtils.fromString(e),
-                            ItemBuilder.fromYaml(yml(), "items." + e),
-                            ButtonAttachment.fromYaml(yml(), "attaches." + e)
-                    )
-            )
-        );
+                    b
+            );
+
+            debugger("Loading button: " + b);
+        });
 
         return buttons;
     }

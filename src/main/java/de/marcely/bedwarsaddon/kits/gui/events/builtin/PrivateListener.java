@@ -27,8 +27,6 @@ public class PrivateListener implements Listener {
         if (inv.getHolder() == null) return;
         if (inv.getHolder() instanceof IMenuHolder) {
 
-            debugger("Handling default click event!");
-
             IMenuHolder menu = (IMenuHolder) inv.getHolder();
             Player player = (Player) e.getWhoClicked();
 
@@ -52,8 +50,6 @@ public class PrivateListener implements Listener {
         if(e.getInventory() == null) return;
         if (inv.getHolder() == null) return;
         if (inv.getHolder() instanceof IMenuHolder) {
-
-            debugger("Handling default open event!");
 
             IMenuHolder menu = (IMenuHolder) inv.getHolder();
             Player player = (Player) e.getPlayer();
@@ -79,8 +75,6 @@ public class PrivateListener implements Listener {
         if (inv.getHolder() == null) return;
         if (inv.getHolder() instanceof IMenuHolder) {
 
-            debugger("Handling default close event!");
-
             IMenuHolder menu = (IMenuHolder) inv.getHolder();
             Player player = (Player) e.getPlayer();
 
@@ -99,19 +93,16 @@ public class PrivateListener implements Listener {
     }
 
     private void checkClick(Menu menu, Button button, InventoryClickEvent e, Clicker p) {
-        debugger("Calling custom click event!");
         MenuClickEvent event = new MenuClickEvent(menu, button, e, p);
         Bukkit.getPluginManager().callEvent(event);
     }
 
     private void checkOpen(Menu menu, InventoryOpenEvent e) {
-        debugger("Calling custom open event!");
         MenuOpenEvent event = new MenuOpenEvent(menu, e);
         Bukkit.getPluginManager().callEvent(event);
     }
 
     private void checkClose(Menu menu, InventoryCloseEvent e) {
-        debugger("Calling custom close event!");
         MenuCloseEvent event = new MenuCloseEvent(menu, e);
         Bukkit.getPluginManager().callEvent(event);
     }

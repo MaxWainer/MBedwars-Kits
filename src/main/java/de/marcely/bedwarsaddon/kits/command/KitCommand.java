@@ -1,24 +1,20 @@
 package de.marcely.bedwarsaddon.kits.command;
 
-import de.marcely.bedwarsaddon.kits.BWKitAddon;
-import de.marcely.bedwarsaddon.kits.gui.MenuConfig;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
+import de.marcely.bedwarsaddon.kits.command.builder.cmd.AddonCommand;
 
-import java.io.File;
+public class KitCommand extends AddonCommand {
 
-public class KitCommand implements CommandExecutor {
+    public KitCommand() {
+
+        setName("");
+
+        setAliases(" ", " ");
 
 
-    @Override
-    public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        new MenuConfig(new File(BWKitAddon.getInstance().getDataFolder(), "gui.yml"))
-                .load().build().open(
-                        (Player) commandSender
-                );
-        return false;
+        setCommand(e -> {
+
+        });
+
     }
 
 }

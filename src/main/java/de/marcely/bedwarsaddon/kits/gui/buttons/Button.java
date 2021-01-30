@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-@Getter@ToString
+@Getter
 public class Button {
 
-    @ToString.Exclude private Consumer<MenuClickEvent> action = (e) -> e.setCancelled(true);
+    private Consumer<MenuClickEvent> action = (e) -> e.setCancelled(true);
     private ItemBuilder builder;
     private char icon;
 
@@ -39,6 +39,11 @@ public class Button {
                 .action(action);
     }
 
+    public static Button of(char icon) {
+        return new Button()
+                .symbol(icon);
+    }
+
     public static List<Button> generate(int count, char icon, String name, Material mat) {
         List<Button> returnable = new ArrayList<>();
         for (int i = 0; i >= count; i++) {
@@ -55,5 +60,15 @@ public class Button {
     }
 
 
-
+    @Override
+    public String toString() {
+        if (getBuilder().getMaterial() == Material.AIR)
+            return "AIR";
+        else
+            return "Button{" +
+                "action=" + action +
+                ", builder=" + builder +
+                ", icon=" + icon +
+                '}';
+    }
 }

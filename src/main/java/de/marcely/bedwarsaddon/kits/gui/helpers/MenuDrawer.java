@@ -5,6 +5,7 @@ import de.marcely.bedwarsaddon.kits.gui.buttons.Button;
 import de.marcely.bedwarsaddon.kits.helpers.jutils.Pair;
 import lombok.Getter;
 import lombok.ToString;
+import lombok.val;
 import net.minecraft.server.v1_12_R1.SystemUtils;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
@@ -82,25 +83,16 @@ public class MenuDrawer {
     }
 
     public MenuDrawer fillMap(Inventory inv) throws Exception {
-        int row = 0;
-        for (String design : rows) {
-            String input = design.replace("\\s+", "");
-            row++;
-            int slot = row == 1 ? 0 : (row * 9) - 9;
-            for (char ch : input.toCharArray()) {
-                Button b = getByChar(ch);
-                debugger("Button: " + b);
-                if(slot == SizeController.isAllowed(rows.size() * 9)) break;
-                if(b.getBuilder().getMaterial() == Material.AIR) continue;
-                else {
-                    debugger("Loading item in slot: " + slot + "(" + b.getBuilder().forceMaterialName() + "), for row: " + row + "(" + design + ")");
-                    inv.setItem(slot, b.getBuilder().build());
-                    outputMap.put(slot, b);
+        for (int i = 0; i < rows.size(); i++) {
+            loadRow(i).forEach( (slot, button) -> {
+                if (button.getBuilder().getMaterial() != Material.AIR) {
+                    inv.setItem(slot, button.getBuilder().build());
+                    outputMap.put(slot, button);
+                    debugger("Loading to slot: " + slot + " [" + button.getBuilder().getMaterial().name() + "]");
                 }
-                slot++;
-            }
-        }
+            });
 
+        }
         return this;
     }
 
@@ -112,19 +104,24 @@ public class MenuDrawer {
         return buttonMap.get(i);
     }
 
-    /**private Map<Integer, Button> loadSpecificRow(int row) throws Exception {
-        Map<Integer, Button> returnable = new LinkedHashMap<>();
+    private Map<Integer, Button> loadRow(int row) {
+        Map<Integer, Button> ret = new LinkedHashMap<>();
 
-        if (row > rows.size()) throw new Exception("Error while loading row #" + row + "! Reason: Unspecified");
+        String input = rows.get(row).replace("\\s+", "");
+        int slot = row == 0 ? 0 : ((row == 1 ? 2 : row) * 9) - 9;
+        //int slot = (row == 1 || row == 0) ? 0 : (row * 9) - 9;
 
-        int slot = (row == 0 || row == 1) ? 0 : (row * 9) - 9;
-        for(char c : rows.get(row).replace("\\s+", "").toCharArray()) {
+        for (char ch : input.toCharArray()) {
+            Button b = getByChar(ch);
 
+            debugger("Adding to slot: " + slot + " [" + b.getBuilder().getMaterial().name() + "]");
 
+            ret.put(slot, b);
 
+            slot++;
         }
 
-        return returnable;
-    }**/
+        return ret;
+    }
 
 }

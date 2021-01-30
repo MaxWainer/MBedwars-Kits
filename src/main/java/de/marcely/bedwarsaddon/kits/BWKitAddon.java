@@ -34,8 +34,6 @@ public class BWKitAddon extends JavaPlugin {
         getLogFactory().log("Loading plugin &5" + getName() + "&7...");
         loadComponents();
         getLogFactory().log("Plugin successfully loaded!");
-
-        getCommand("kits").setExecutor(new KitCommand()); // It's for testing!
     }
 
     @Override

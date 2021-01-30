@@ -18,8 +18,6 @@ import org.bukkit.inventory.Inventory;
 
 import java.util.*;
 
-import static de.marcely.bedwarsaddon.kits.helpers.LoggerFactory.debugger;
-
 @Getter@ToString
 public class Menu implements IMenuHolder {
 
@@ -34,7 +32,6 @@ public class Menu implements IMenuHolder {
     private Inventory inventory;
 
     public Menu drawer(MenuDrawer drawer) {
-        debugger("Loading drawer: " + drawer);
         this.drawer = drawer;
         return this;
     }
@@ -59,14 +56,6 @@ public class Menu implements IMenuHolder {
         try {
             SizeController.isAllowed(drawer.getRows().size());
             drawer.fillMap(getInventory());
-
-            /**drawer.getOutputMap().forEach( (slot, button) -> {
-                debugger("Loading button in " + slot + ": " + button);
-                inventory.setItem(slot, button.getBuilder().build());
-            } );
-            Arrays.stream(inventory.getContents()).forEach(e -> {
-                if(e != null) debugger("inv: Mat:" + e.getType().name());
-            });**/
         } catch (Exception e) {
             BWKitAddon.getLogFactory().error(e);
             return errorMenu();
